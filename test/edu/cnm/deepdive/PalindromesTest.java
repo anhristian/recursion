@@ -45,4 +45,13 @@ static final String[] knownNonDenormalized = {
     assertFalse(Palindromes.testDenormalized("A man, a plan, a dam - Hoover"));
 
   }
+
+  @Test
+  void testIterative() {
+    Palindromes iterative = new Palindromes();
+    for (int i = 0; i < testParams.length; i++) {
+      boolean actual = iterative.testIterative(testParams[i]);
+      assertEquals(testExpected[i], actual);
+    }
+  }
 }
