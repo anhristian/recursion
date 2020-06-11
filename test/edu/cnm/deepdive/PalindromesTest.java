@@ -5,53 +5,41 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 class PalindromesTest {
-static final String[] knownPalindromes = {
-    "radar",
-    "abba",
-    "x",
-    "",
- };
-static final String[] knownNonPalindromes = {
-    "sonar",
-    "abb"
-};
-static final String[] knownDenormalized = {
-    "radar",
-    "Radar",
-    "A man, a plan, a canal - Panama!",
-    "aBbA"
-};
-static final String[] knownNonDenormalized = {
-    "A man, a plan, a dam - Hoover!",
-};
+static final String[] knownPalindromes = {"radar", "abba", "x", ""};
+static final String[] knownNonPalindromes = {"sonar", "abb"};
+
+static final String[] knownDenormalized = {"radar", "Radar", "A man, a plan, a canal - Panama!", "aBbA"};
+static final String[] knownNonDenormalized = {"A man, a plan, a dam - Hoover!",};
 
   @Test
   void testRecursive() {
-    assertTrue(Palindromes.testRecursive("radar"));
-    assertTrue(Palindromes.testRecursive("abba"));
-    assertTrue(Palindromes.testRecursive("x"));
-    assertTrue(Palindromes.testRecursive(""));
-    assertFalse(Palindromes.testRecursive("sonar"));
-    assertFalse(Palindromes.testRecursive("abb"));
-
+    for (String values : knownPalindromes) {
+      assertTrue(Palindromes.testRecursive(values));
+    }
+    for (String value : knownNonPalindromes) {
+      assertFalse(Palindromes.testRecursive(value));
+    }
   }
 
   @Test
   void testDenormalized() {
-    assertTrue(Palindromes.testDenormalized("radar"));
-    assertTrue(Palindromes.testDenormalized("Radar"));
-    assertTrue(Palindromes.testDenormalized("A man, a plan, a canal - Panama!"));
-    assertTrue(Palindromes.testDenormalized("aBba"));
-    assertFalse(Palindromes.testDenormalized("A man, a plan, a dam - Hoover"));
+for (String values : knownDenormalized) {
+  assertTrue(Palindromes.testDenormalized(values));
+}
+for (String values: knownNonDenormalized) {
+  assertFalse(Palindromes.testDenormalized(values));
+}
 
   }
 
   @Test
   void testIterative() {
     Palindromes iterative = new Palindromes();
-    for (int i = 0; i < testParams.length; i++) {
-      boolean actual = iterative.testIterative(testParams[i]);
-      assertEquals(testExpected[i], actual);
+    for ( String values : knownPalindromes) {
+      assertTrue(Palindromes.testIterative(values));
+    }
+    for (String values : knownNonPalindromes) {
+      assertFalse(Palindromes.testIterative(values));
     }
   }
 }

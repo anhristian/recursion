@@ -13,30 +13,21 @@ public class Factorials {
    * result as a {@link BigInteger}, for extended size values.
    *
    * @param n the {@code long} values for which the factorial function is to be computed.
-   * @return  n!
+   * @return n!
    * @throws IllegalArgumentException when {@code n < 0}.
    */
-  public static long computeRecursive(int n) throws IllegalArgumentException{
-    long result;
+
+
+  public static BigInteger computeRecursive(int n) throws IllegalArgumentException {
+    BigInteger result = BigInteger.ONE;
     if (n < 0) {
       throw new IllegalArgumentException();
     }
-    if (n == 0) {
-      result = 1;
-    }
-    else{
-      result = n * computeRecursive(n - 1);
+    if (n > 0) {
+      result = BigInteger.valueOf(n).multiply(computeRecursive(n-1));
     }
     return result;
   }
-  public static BigInteger computeRecursive(int n) throws IllegalArgumentException {
-    BigInteger result;
-    if (n < 0) {
-
-    }
-  }
-
-
 
 
   public static long computeIterative(int n) throws IllegalArgumentException {

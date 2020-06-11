@@ -15,6 +15,18 @@ class FactorialsTest {
 
   };
   @Test
+  void computeRecursive() {
+    for (long[] testCases : testCases) {
+      int n = (int) testCases[0];
+      long expected = testCases[1];
+      long actual = Factorials.computeIterative(n);
+      assertEquals(expected, actual);
+
+    }
+  }
+
+
+  @Test
   void computeIterative() {
     for (long[] testCase : testCases) {
       int n = (int) testCase[0];
